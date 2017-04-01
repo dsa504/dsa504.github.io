@@ -33,7 +33,8 @@ show_count: false
 # Miscellaneous
 google_analytics:
 favicon: /favicon.png
-twitter:
+twitter: https://twitter.com/neworleansdsa
+facebook: https://facebook.com/neworleansdsa
 google_plus:
 fb_admins:
 fb_app_id:
