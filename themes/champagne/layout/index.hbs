@@ -12,8 +12,6 @@
 {{! The main content area on the homepage }}
 <main class="content" role="main">
 
-    <h5 class="index-headline featured"><span>Featured</span></h5>
-
     <div class="container featured">
         {{#foreach page.posts}}
             {{#if featured}}
@@ -22,7 +20,6 @@
         {{/foreach}}
     </div>
 
-    <h5 class="index-headline normal"><span>Latest</span></h5>
 
     <div class="cf frame">
     {{#foreach page.posts}}

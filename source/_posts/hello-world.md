@@ -1,5 +1,5 @@
 ---
-title: Ayy lmao
+title: Hello World!
 ---
 
-## There is a spectre haunting the boot
+# Hello World!
