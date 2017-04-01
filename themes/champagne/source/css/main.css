@@ -4,6 +4,17 @@ colors:
   black: #231f20
 */
 
+.sr-only {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  border:0
+}
+
 .cf:after {
   content: "";
   display: table;
@@ -76,9 +87,10 @@ body {
   background: #ec1f27;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .champagne-nav__item {
     display: block;
+    text-align: center;
   }
 }
 
@@ -87,10 +99,8 @@ body {
   background: #231f20;
 }
 
-.champagne-nav__item,
-.champagne-nav__item:visited,
-.champagne-nav__item:hover,
-.champagne-nav__item:active {
+.champagne-nav__item--social {
+  text-align: center;
 }
 
 .logo-readium {
