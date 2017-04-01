@@ -49,12 +49,12 @@ module.exports = function(hexo) {
 
     get_title: function (page) {
       if (page.title) {
-        return page.title + ' | Jared Forsyth.com'
+        return page.title + ' | DSA New Orleans'
       }
       if (page.tag) {
-        return page.tag + ' | Jared Forsyth.com'
+        return page.tag + ' | DSA New Orleans'
       }
-      return 'Jared Forsyth.com'
+      return 'DSA New Orleans'
     },
 
     tags: function (tags, options) {
