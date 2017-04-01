@@ -46,8 +46,10 @@
     {{ghost_head}}
 </head>
 <body class="{{body_class}}">
-
-    <a href="{{config.root}}" class="logo-readium"><span class="logo" style="background-image: url({{theme.logo}})"></span></a>
+    <nav class="champagne-nav">
+        <a class="champagne-nav__item" href="{{config.root}}">Home</a>
+        <a class="champagne-nav__item" href="{{config.signup_form}}">Sign Up</a>
+    </nav>
     {{! Everything else gets inserted here }}
     {{{body}}}
 
