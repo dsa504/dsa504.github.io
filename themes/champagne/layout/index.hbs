@@ -15,7 +15,26 @@
     <div class="container featured">
         {{#foreach page.posts}}
             {{#if featured}}
-              {{> summary}}
+              <article>
+                <h2 class="post-title" itemprop="name">
+                    <a href="{{{url}}}" itemprop="url">{{{title}}}</a>
+                </h2>
+
+                <div class="post-meta">
+                  <time datetime="{{date date format='YYYY-MM-DD'}}">
+                      {{date date format='DD MMMM YYYY'}}
+                  </time>
+                  <span class="post-tags-set">
+                    {{tags page.tags prefix=", tagged on " separator=", "}}
+                  </span>
+                </div>
+
+                <section class="post-content">
+                    <a name="topofpage"></a>
+
+                    {{{content}}}
+                </section>
+              </article>
             {{/if}}
         {{/foreach}}
     </div>
@@ -24,7 +43,26 @@
     <div class="cf frame">
     {{#foreach page.posts}}
         {{#unless featured}}
-            {{> summary}}
+          <article>
+              <h2 class="post-title" itemprop="name">
+                  <a href="{{{url}}}" itemprop="url">{{{title}}}</a>
+              </h2>
+
+              <div class="post-meta">
+                <time datetime="{{date date format='YYYY-MM-DD'}}">
+                  {{date date format='DD MMM YYYY'}}
+                </time>
+                <span class="post-tags-set">
+                  {{tags page.tags prefix=", tagged on " separator=", "}}
+                </span>
+              </div>
+
+              <section class="post-content">
+                  <a name="topofpage"></a>
+
+                  {{{content}}}
+              </section>
+            </article>
         {{/unless}}
     {{/foreach}}
     </div>
