@@ -68,4 +68,13 @@ theme: champagne
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  - type: git
+    repo: git@github.com:dsa504/dsa504.github.io.git
+    branch: master
+  - type: git
+    repo: git@github.com:dsa504/dsa504.github.io.git
+    branch: src
+    extend_dirs: /
+    ignore_hidden: false
+    ignore_pattern:
+        public: .
