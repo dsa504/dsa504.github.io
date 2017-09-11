@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>DSA New Orleans - Events</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="DSA New Orleans">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:site" content="http://mark-read.info">
+    <meta name="twitter:creator" content="@MarkReadM">
+    <meta name="google-site-verification" content="">
+    <meta property="fb:admins" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="DSA New Orleans">
+    <meta property="og:description" content="">
+
+    <link rel="icon" type="image/x-icon" href="/img/logo.png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/js/styles/obsidian.css">
+    <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/solarized.css" />
+    <!--
+    <link href="/css/commented.min.css" rel="stylesheet">
+    -->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <style>
+        .post-content a,
+        .post-content a:active {
+            color: #ec1f27;
+        }
+        .post-content a:visited {
+            color: #d3363b;
+        }
+        .post-content a:hover,
+        .post-content a:focus {
+            color: #000;
+        }
+    </style>
+</head>
+<body class="">
+    <nav class="champagne-nav">
+        <a class="champagne-nav__item" href="/">Home</a>
+        <a class="champagne-nav__item" href="/events.html">Events</a>
+        <a class="champagne-nav__item" href="https://goo.gl/forms/PGwzoWr7tdQqqR3w1">Sign Up</a>
+        <a class="champagne-nav__item champagne-nav__item--social" href="https://twitter.com/neworleansdsa"><span class="sr-only">Twitter</span><i class="fa fa-twitter"></i></a>
+        <a class="champagne-nav__item champagne-nav__item--social" href="https://facebook.com/neworleansdsa"><span class="sr-only">Facebook</span><i class="fa fa-facebook"></i></a>
+    </nav>
+    
+
+<div class="teaserimage">
+    <div class="teaserimage-image" style="background-image: url(/img/teaser.png)">
+        Teaser Image
+    </div>
+</div>
+<script src="/js/teaser.js"></script>
+
+<main class="content" role="main">
+
+        <div id="dsa-cal-app">
+                <h1>Upcoming Events</h1>
+                <ul id="events-calendar">
+                    <li v-for="(event, index) in calevents" itemscope itemtype="http://schema.org/Event">
+                        <meta itemprop="startDate" content="{{event.theStart}}">
+                        <div v-for="thedate in getPrettyDate(event.theStart)" class="thedate">
+                            <span class="day">{{ thedate.day }}</span> 
+                            <span class="month">{{ thedate.month }}</span>
+                            <span class="date"> {{ thedate.date }}</span>
+                            <span class="time"> {{ thedate.time }} {{ thedate.ampm}}</span>
+                        </div>
+                                               
+                        <div itemprop="name" class="name">{{ event.summary }}</div>
+                        <div class="location">{{ event.location }}</div>
+                        <div class="description" itemprop="description">{{ event.description }}</div>
+                    </li>
+                </ul>
+                <div id="errors" v-html="errors"></div>
+        </div>
+
+</main>
+
+<footer class="site-footer">
+    <a class="subscribe icon-feed" href="/rss.xml"><span class="tooltip"> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="//">DSA New Orleans</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Proudly published with <a class="icon-hexo" href="http://hexo.io"> Hexo</a></section>
+    </div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+    
+    <!-- Calendar-specific stuff -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/events.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+    <script type="text/javascript" src="/js/events.js"></script>
+
+</body>
+</html>
