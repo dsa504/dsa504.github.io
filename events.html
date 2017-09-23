@@ -77,11 +77,11 @@
                 <ul id="events-calendar">
                     <li v-for="(event, index) in calevents" itemscope itemtype="http://schema.org/Event">
                         <meta itemprop="startDate" content="{{event.theStart}}">
-                        <div v-for="thedate in getPrettyDate(event.theStart)" class="thedate">
-                            <span class="day">{{ thedate.day }}</span> 
-                            <span class="month">{{ thedate.month }}</span>
-                            <span class="date"> {{ thedate.date }}</span>
-                            <span class="time"> {{ thedate.time }} {{ thedate.ampm}}</span>
+                        <div class="thedate">
+                            <span class="day">{{ thedate.prettyDate.day }}</span> 
+                            <span class="month">{{ thedate.prettyDate.month }}</span>
+                            <span class="date"> {{ thedate.prettyDate.date }}</span>
+                            <span class="time"> {{ thedate.prettyDate.time }} {{ thedate.prettyDate.ampm }}</span>
                         </div>
                                                
                         <div itemprop="name" class="name">{{ event.summary }}</div>
