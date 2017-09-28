@@ -1,5 +1,19 @@
 (() => {
     
+    const getPrettyDate = (uglydateTime) => {
+        const prettyPattern = "dddd, MMMM Do YYYY, h:mm a";
+        const theMoment = moment(uglydateTime);
+        
+        const day = theMoment.clone().format("dddd");
+        const month = theMoment.clone().format("MMMM");
+        const date = theMoment.clone().format("Do");
+        const year = theMoment.clone().format("YYYY");
+        const time = theMoment.clone().format("h:mm");
+        const ampm = theMoment.clone().format("a");
+        const output = {day,month,date,year,time,ampm};
+        return output;
+    };
+
     const createVm = (config) => {
         const _vm = {
             el: '#dsa-cal-app',
@@ -8,23 +22,7 @@
                 errors:''
             },
             methods: {
-                getPrettyDate: (uglydateTime) => {
-                    const prettyPattern = "dddd, MMMM Do YYYY, h:mm a";
-                    
-                    if(uglydateTime == undefined){
-                        console.log("derp");
-                    }
-                    const theMoment = moment(uglydateTime);
-                    // this is maybe the not most rational way to do this <_<
-                    const day = theMoment.clone().format("dddd");
-                    const month = theMoment.clone().format("MMMM");
-                    const date = theMoment.clone().format("Do");
-                    const year = theMoment.clone().format("YYYY");
-                    const time = theMoment.clone().format("h:mm");
-                    const ampm = theMoment.clone().format("a");
-                    const output = {day,month,date,year,time,ampm};
-                    return output;
-                }
+                
             },
             mounted: () => {
                 const today = new Date();
@@ -44,7 +42,7 @@
                     // all day events don't have a dateTime, so will screw up the chonological order- so if there's no dateTime, just use date
                     .map((e) => {
                         const theStart = (e.start.dateTime == undefined) ? e.start.date : e.start.dateTime;
-                        return {...e, theStart, prettyDate: _vm.getPrettyDate(e)};
+                        return {...e, theStart, prettyDate: getPrettyDate(e)};
                     })
                     // sort to make sure the events are in chron order
                     .sort((a,b) => { 
