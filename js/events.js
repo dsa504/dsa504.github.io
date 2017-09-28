@@ -1,4 +1,4 @@
-(() => {
+(async () => {
     
     const getPrettyDate = (uglydateTime) => {
         const prettyPattern = "dddd, MMMM Do YYYY, h:mm a";
@@ -24,12 +24,15 @@
             methods: {
                 
             },
-            mounted: () => {
+            //showErrors:false,
+            mounted: async () => {
                 const today = new Date();
                 // only get upcoming events:
                 const uri = `https://www.googleapis.com/calendar/v3/calendars/${config.calendarId}/events?key=${config.apiKey}&timeMin=${today.toISOString()}`;
+                
+                let response;
                 try {
-                    const response = await fetch(uri);
+                    response = await fetch(uri);
                 }
                 catch (r) {
                     vm.errors = "Derp. Something went wrong- if you're seeing this, please let us know on <a href='https://www.facebook.com/NewOrleansDSA/'>Facebook</a> or the <a href='https://twitter.com/neworleansdsa'>Twitters</a>!";
@@ -45,9 +48,9 @@
                         return {...e, theStart, prettyDate: getPrettyDate(e)};
                     })
                     // sort to make sure the events are in chron order
-                    .sort((a,b) => { 
-                        const a = new Date(a.theStart);
-                        const b = new Date(b.theStart);
+                    .sort((x,y) => { 
+                        const a = new Date(x.theStart);
+                        const b = new Date(y.theStart);
                         return a<b ? -1 : a>b ? 1 : 0;
                     });
             }
@@ -56,7 +59,14 @@
         return _vm;
     };
     
-    const configResponse = await fetch("/calendarconfig.json");
+    let configResponse
+    
+    try {
+        configResponse = await fetch("/calendarconfig.json");
+    }
+    catch(e){
+        console.log(e);
+    }
     const config = await configResponse.json();
 
     new Vue(createVm(config));
