@@ -5,15 +5,13 @@
     
     * Debian / Ubuntu
     ```bash
-    sudo apt-get install ruby
+    sudo apt-get install ruby ruby-dev gcc make
+    sudo gem install jekyll
     ```
     * Windows (requires Chocolatey package manager)
     ```powershell
     choco install ruby
     choco install ruby2.devkit
-    ```
-* Jekyll
-    ```
     gem install jekyll
     ```
 ## Building
