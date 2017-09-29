@@ -1,12 +1,11 @@
-(function ($) {
-    "use strict";
+(($) => {
 
-    $(document).ready(function(){
+    $(document).ready(() => {
 
-        var $window = $(window),
-            $image = $('.teaserimage-image');
-        $window.on('scroll', function() {
-            var top = $window.scrollTop();
+        const $window = $(window);
+        const $image = $('.teaserimage-image');
+        $window.on('scroll', () => {
+            const top = $window.scrollTop();
 
             if (top < 0 || top > 1500) { return; }
             $image
@@ -17,5 +16,5 @@
 
     });
 
-}(jQuery));
+})(jQuery);
 

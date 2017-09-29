@@ -1,16 +1,16 @@
 (async () => {
     
     const getPrettyDate = (uglydateTime) => {
-        const prettyPattern = "dddd, MMMM Do YYYY, h:mm a";
         const theMoment = moment(uglydateTime);
         
-        const day = theMoment.clone().format("dddd");
-        const month = theMoment.clone().format("MMMM");
-        const date = theMoment.clone().format("Do");
-        const year = theMoment.clone().format("YYYY");
-        const time = theMoment.clone().format("h:mm");
-        const ampm = theMoment.clone().format("a");
+        const day = theMoment.format("dddd");
+        const month = theMoment.format("MMMM");
+        const date = theMoment.format("Do");
+        const year = theMoment.format("YYYY");
+        const time = theMoment.format("h:mm");
+        const ampm = theMoment.format("a");
         const output = {day,month,date,year,time,ampm};
+        
         return output;
     };
 
@@ -18,7 +18,7 @@
         const _vm = {
             el: '#dsa-cal-app',
             data: {
-                calevents: [],
+                calEvents: [],
                 showErrors:false,
             },
             methods: {
@@ -45,11 +45,22 @@
 
                 const theEvents = (await response.json()).items;
                 
-                _vm.data.calevents = theEvents
+                _vm.data.calEvents = theEvents
                     // all day events don't have a dateTime, so will screw up the chonological order- so if there's no dateTime, just use date
                     .map((e) => {
-                        const theStart = (e.start.dateTime == undefined) ? e.start.date : e.start.dateTime;
-                        return {...e, theStart, prettyDate: getPrettyDate(e)};
+                        const hasStartTime = e.start.dateTime != undefined;
+                        const startTime = (hasStartTime) ? e.start.dateTime : e.start.date;
+                        
+                        const hasEndTime = e.end.dateTime != undefined 
+                        const endTime = (hasEndTime) ? e.end.dateTime : e.end.date;
+                        
+                        return {
+                            ...e, 
+                            hasStartTime,
+                            hasEndTime,
+                            prettyStartTime: getPrettyDate(startTime),
+                            prettyEndTime: getPrettyDate(endTime),
+                        };
                     })
                     // sort to make sure the events are in chron order
                     .sort((x,y) => { 

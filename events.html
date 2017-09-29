@@ -75,13 +75,16 @@
         <div id="dsa-cal-app">
                 <h1>Upcoming Events</h1>
                 <ul id="events-calendar">
-                    <li v-for="(event, index) in calevents" itemscope itemtype="http://schema.org/Event">
+                    <li v-for="(event, index) in calEvents" itemscope itemtype="http://schema.org/Event">
                         <meta itemprop="startDate" content="{{event.theStart}}">
                         <div class="thedate">
-                            <span class="day">{{ event.prettyDate.day }}</span> 
-                            <span class="month">{{ event.prettyDate.month }}</span>
-                            <span class="date"> {{ event.prettyDate.date }}</span>
-                            <span class="time"> {{ event.prettyDate.time }} {{ event.prettyDate.ampm }}</span>
+                            <span class="day">{{ event.prettyStartTime.day }}</span> 
+                            <span class="month">{{ event.prettyStartTime.month }}</span>
+                            <span class="date"> {{ event.prettyStartTime.date }}</span>
+                            <span class="time" v-if="event.hasStartTime"> 
+                                <span> {{ event.prettyStartTime.time }} {{ event.prettyStartTime.ampm }} </span>
+                                <span v-if="event.hasEndTime"> - {{ event.prettyEndTime.time }} {{ event.prettyEndTime.ampm }} </span>
+                            </span>
                         </div>
                                                
                         <div itemprop="name" class="name">{{ event.summary }}</div>
@@ -89,9 +92,9 @@
                         <div class="description" itemprop="description">{{ event.description }}</div>
                     </li>
                 </ul>
-                <!-- <div id="errors" v-if="showErrors">
+                <div id="errors" v-if="showErrors">
                     Derp. Something went wrong- if you're seeing this, please let us know on <a href='https://www.facebook.com/NewOrleansDSA/'>Facebook</a> or the <a href='https://twitter.com/neworleansdsa'>Twitters</a>!
-                </div> -->
+                </div>
         </div>
 
 </main>
