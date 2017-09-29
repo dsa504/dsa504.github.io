@@ -4,6 +4,8 @@ colors:
   black: #231f20
 */
 
+[v-cloak] {display:none;}
+
 .sr-only {
   position:absolute;
   width:1px;
