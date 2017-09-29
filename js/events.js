@@ -18,15 +18,15 @@
         const _vm = {
             el: '#dsa-cal-app',
             data: {
-                calevents: '',
-                errors:''
+                calevents: [],
+                showErrors:false,
             },
             methods: {
                 
             },
             //showErrors:false,
             mounted: async () => {
-                const today = new Date();
+                const today = moment(new Date()).add("month", -1);
                 // only get upcoming events:
                 const uri = `https://www.googleapis.com/calendar/v3/calendars/${config.calendarId}/events?key=${config.apiKey}&timeMin=${today.toISOString()}`;
                 
@@ -35,13 +35,17 @@
                     response = await fetch(uri);
                 }
                 catch (r) {
-                    vm.errors = "Derp. Something went wrong- if you're seeing this, please let us know on <a href='https://www.facebook.com/NewOrleansDSA/'>Facebook</a> or the <a href='https://twitter.com/neworleansdsa'>Twitters</a>!";
+                    _vm.showErrors = true;
                     return;
                 }
         
+                if (!response.ok) {
+                    return _vm.showErrors = true 
+                }
+
                 const theEvents = (await response.json()).items;
                 
-                _vm.calevents = theEvents
+                _vm.data.calevents = theEvents
                     // all day events don't have a dateTime, so will screw up the chonological order- so if there's no dateTime, just use date
                     .map((e) => {
                         const theStart = (e.start.dateTime == undefined) ? e.start.date : e.start.dateTime;
@@ -69,5 +73,8 @@
     }
     const config = await configResponse.json();
 
-    new Vue(createVm(config));
+    const vm = createVm(config);
+
+    window.vm = vm;
+    new Vue(vm);
 })();
