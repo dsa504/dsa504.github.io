@@ -68,34 +68,34 @@
         Teaser Image
     </div>
 </div>
-<script src="/js/teaser.js"></script>
+<script src="/js/lib/teaser.js"></script>
 
 <main class="content" role="main">
 
-        <div id="dsa-cal-app" v-cloak>
-                <h1>Upcoming Events</h1>
-                <ul id="events-calendar">
-                    <li v-for="(event, index) in calEvents" itemscope itemtype="http://schema.org/Event">
-                        <meta itemprop="startDate" content="{{event.theStart}}">
-                        <div class="thedate">
-                            <span class="day">{{ event.prettyStartTime.day }}</span> 
-                            <span class="month">{{ event.prettyStartTime.month }}</span>
-                            <span class="date"> {{ event.prettyStartTime.date }}</span>
-                            <span class="time" v-if="event.hasStartTime"> 
-                                <span> {{ event.prettyStartTime.time }} {{ event.prettyStartTime.ampm }} </span>
-                                <span v-if="event.hasEndTime"> - {{ event.prettyEndTime.time }} {{ event.prettyEndTime.ampm }} </span>
-                            </span>
-                        </div>
-                                               
-                        <div itemprop="name" class="name">{{ event.summary }}</div>
-                        <div class="location">{{ event.location }}</div>
-                        <div class="description" itemprop="description">{{ event.description }}</div>
-                    </li>
-                </ul>
-                <div id="errors" v-if="showErrors">
-                    Derp. Something went wrong- if you're seeing this, please let us know on <a href='https://www.facebook.com/NewOrleansDSA/'>Facebook</a> or the <a href='https://twitter.com/neworleansdsa'>Twitters</a>!
-                </div>
-        </div>
+    <div id="dsa-cal-app" v-cloak>
+            <h1>Upcoming Events</h1>
+            <ul id="events-calendar">
+                <li v-for="(event, index) in calEvents" itemscope itemtype="http://schema.org/Event">
+                    <meta itemprop="startDate" content="{{event.theStart}}">
+                    <div class="thedate">
+                        <span class="day">{{ event.prettyStartTime.day }}</span> 
+                        <span class="month">{{ event.prettyStartTime.month }}</span>
+                        <span class="date"> {{ event.prettyStartTime.date }}</span>
+                        <span class="time" v-if="event.hasStartTime"> 
+                            <span> {{ event.prettyStartTime.time }} {{ event.prettyStartTime.ampm }} </span>
+                            <span v-if="event.hasEndTime"> - {{ event.prettyEndTime.time }} {{ event.prettyEndTime.ampm }} </span>
+                        </span>
+                    </div>
+                                            
+                    <div itemprop="name" class="name">{{ event.summary }}</div>
+                    <div class="location">{{ event.location }}</div>
+                    <div class="description" itemprop="description">{{ event.description }}</div>
+                </li>
+            </ul>
+            <div id="errors" v-if="showErrors">
+                Derp. Something went wrong- if you're seeing this, please let us know on <a href='https://www.facebook.com/NewOrleansDSA/'>Facebook</a> or the <a href='https://twitter.com/neworleansdsa'>Twitters</a>!
+            </div>
+    </div>
 
 </main>
 
@@ -112,7 +112,7 @@
     <!-- Calendar-specific stuff -->
     <link rel="stylesheet" type="text/css" media="screen" href="/css/events.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
-    <script type="text/javascript" src="/js/events.js"></script>
+    <script type="text/javascript" src="/js/lib/events.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,7 @@
+import Vue from "vue";
+import moment from "moment";
+import {} from "babel-polyfill";
+
 (async () => {
     
     const getPrettyDate = (uglydateTime) => {
@@ -19,7 +23,7 @@
             el: '#dsa-cal-app',
             data: {
                 calEvents: [],
-                showErrors:false,
+                showErrors: false,
             },
             methods: {
                 

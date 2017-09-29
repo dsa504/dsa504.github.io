@@ -1,0 +1,25 @@
+{
+  "name": "dsa504.github.io",
+  "version": "1.0.0",
+  "description": "## Requirements * Ruby",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel js/src -d js/lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsa504/dsa504.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsa504/dsa504.github.io/issues"
+  },
+  "homepage": "https://github.com/dsa504/dsa504.github.io#readme",
+  "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0"
+  }
+}
