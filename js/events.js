@@ -26,7 +26,7 @@
             },
             //showErrors:false,
             mounted: async () => {
-                const today = moment(new Date()).add("month", -1);
+                const today = moment(new Date());
                 // only get upcoming events:
                 const uri = `https://www.googleapis.com/calendar/v3/calendars/${config.calendarId}/events?key=${config.apiKey}&timeMin=${today.toISOString()}`;
                 
