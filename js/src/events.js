@@ -1,5 +1,5 @@
-import Vue from "vue";
-import moment from "moment";
+//import Vue from "vue";
+// import moment from "moment";
 import {} from "babel-polyfill";
 
 (async () => {
@@ -58,13 +58,10 @@ import {} from "babel-polyfill";
                         const hasEndTime = e.end.dateTime != undefined 
                         const endTime = (hasEndTime) ? e.end.dateTime : e.end.date;
                         
-                        return {
-                            ...e, 
-                            hasStartTime,
-                            hasEndTime,
-                            prettyStartTime: getPrettyDate(startTime),
-                            prettyEndTime: getPrettyDate(endTime),
-                        };
+                        const prettyStartTime = getPrettyDate(startTime);
+                        const prettyEndTime = getPrettyDate(endTime);
+
+                        return {...e, hasStartTime, hasEndTime, prettyStartTime, prettyEndTime, };
                     })
                     // sort to make sure the events are in chron order
                     .sort((x,y) => { 

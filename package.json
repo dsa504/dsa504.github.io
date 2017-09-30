@@ -18,8 +18,13 @@
   },
   "homepage": "https://github.com/dsa504/dsa504.github.io#readme",
   "dependencies": {
+    "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.0"
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "moment": "^2.18.1",
+    "vue": "^2.4.4"
   }
 }
