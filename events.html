@@ -1,12 +1,12 @@
 ---
 layout: default
 ---
-
+    {% raw %}
     <div id="dsa-cal-app" v-cloak>
             <h1>Upcoming Events</h1>
             <ul id="events-calendar">
-                <li v-for="(event, index) in calEvents" itemscope itemtype="http://schema.org/Event">
-                    <meta itemprop="startDate" content="{{event.theStart}}">
+                <li v-for="event in calEvents" itemscope itemtype="http://schema.org/Event">
+                    <meta itemprop="startDate" content="{{ event.theStart }}">
                     <div class="thedate">
                         <span class="day">{{ event.prettyStartTime.day }}</span> 
                         <span class="month">{{ event.prettyStartTime.month }}</span>
@@ -26,6 +26,7 @@ layout: default
                 Derp. Something went wrong- if you're seeing this, please let us know on <a href='https://www.facebook.com/NewOrleansDSA/'>Facebook</a> or the <a href='https://twitter.com/neworleansdsa'>Twitters</a>!
             </div>
     </div>
+    {% endraw %}
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
     
