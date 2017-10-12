@@ -61,12 +61,20 @@ import {} from "babel-polyfill";
                         const prettyStartTime = getPrettyDate(startTime);
                         const prettyEndTime = getPrettyDate(endTime);
 
-                        return {...e, hasStartTime, hasEndTime, prettyStartTime, prettyEndTime, };
+                        return {
+                            ...e, 
+                            startTime, 
+                            endTime, 
+                            hasStartTime, 
+                            hasEndTime, 
+                            prettyStartTime, 
+                            prettyEndTime, 
+                        };
                     })
                     // sort to make sure the events are in chron order
                     .sort((x,y) => { 
-                        const a = new Date(x.theStart);
-                        const b = new Date(y.theStart);
+                        const a = new Date(x.startTime);
+                        const b = new Date(y.startTime);
                         return a<b ? -1 : a>b ? 1 : 0;
                     });
             }

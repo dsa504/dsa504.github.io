@@ -3794,12 +3794,19 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                                                         var prettyStartTime = getPrettyDate(startTime);
                                                         var prettyEndTime = getPrettyDate(endTime);
 
-                                                        return Object.assign({}, e, { hasStartTime: hasStartTime, hasEndTime: hasEndTime, prettyStartTime: prettyStartTime, prettyEndTime: prettyEndTime });
+                                                        return Object.assign({}, e, {
+                                                            startTime: startTime,
+                                                            endTime: endTime,
+                                                            hasStartTime: hasStartTime,
+                                                            hasEndTime: hasEndTime,
+                                                            prettyStartTime: prettyStartTime,
+                                                            prettyEndTime: prettyEndTime
+                                                        });
                                                     })
                                                     // sort to make sure the events are in chron order
                                                     .sort(function (x, y) {
-                                                        var a = new Date(x.theStart);
-                                                        var b = new Date(y.theStart);
+                                                        var a = new Date(x.startTime);
+                                                        var b = new Date(y.startTime);
                                                         return a < b ? -1 : a > b ? 1 : 0;
                                                     });
 
