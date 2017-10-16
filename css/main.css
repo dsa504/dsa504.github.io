@@ -295,16 +295,17 @@ body {
   margin: 0 auto;
   padding: 48px 0;
   width: 100%;
-  max-width: 700px;
   font-size: 12px;
   text-align: center;
-  color: #999999;
+  background: #ec1f27;
+  color: #fff;
   line-height: 17.6px; }
   .site-footer a {
-    color: #666666;
-    text-decoration: none; }
-    .site-footer a:hover {
-      color: #231f20; }
+    color: #fff;
+    text-decoration: underline; }
+    .site-footer a:hover,
+    .site-footer a:focus {
+      text-decoration: none; }
 
 .post .article-image {
   position: absolute;
