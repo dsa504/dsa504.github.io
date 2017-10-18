@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -41,22 +42,31 @@
         .post-content a:active {
             color: #ec1f27;
         }
+
         .post-content a:visited {
             color: #d3363b;
         }
+
         .post-content a:hover,
         .post-content a:focus {
             color: #000;
         }
     </style>
 </head>
+
 <body class="">
     <nav class="champagne-nav">
         <a class="champagne-nav__item" href="/">Home</a>
         <a class="champagne-nav__item" href="/events.html">Events</a>
         <a class="champagne-nav__item" href="https://goo.gl/forms/PGwzoWr7tdQqqR3w1">Sign Up</a>
-        <a class="champagne-nav__item champagne-nav__item--social" href="https://twitter.com/neworleansdsa"><span class="sr-only">Twitter</span><i class="fa fa-twitter"></i></a>
-        <a class="champagne-nav__item champagne-nav__item--social" href="https://facebook.com/neworleansdsa"><span class="sr-only">Facebook</span><i class="fa fa-facebook"></i></a>
+        <a class="champagne-nav__item champagne-nav__item--social" href="https://twitter.com/neworleansdsa">
+            <span class="sr-only">Twitter</span>
+            <i class="fa fa-twitter"></i>
+        </a>
+        <a class="champagne-nav__item champagne-nav__item--social" href="https://facebook.com/neworleansdsa">
+            <span class="sr-only">Facebook</span>
+            <i class="fa fa-facebook"></i>
+        </a>
     </nav>
     <div class="teaserimage">
         <div class="teaserimage-image" style="background-image: url(/img/teaser.png)">
@@ -72,9 +82,58 @@
     </main>
 
     <footer class="site-footer">
-        <a class="subscribe icon-feed" href="/rss.xml"><span class="tooltip"> Subscribe!</span></a>
+        <!-- Begin MailChimp Signup Form -->
+        <style type="text/css">
+            #mc_embed_signup {
+                clear: left;
+            }
+
+            .mc-field-group {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .mc-field-group .button {
+                border: none;
+                background: #000;
+                color: #fff;
+                padding: 3px 5px;
+                margin-left: -3px;
+            }
+        </style>
+        <div id="mc_embed_signup">
+            <form action="https://twitter.us15.list-manage.com/subscribe/post?u=a2c641e5b36bf93dd7357093f&amp;id=379b2c1357" method="post"
+                id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+                <div id="mc_embed_signup_scroll">
+                    <strong>Subscribe to our newsletter</strong>
+                    <br />
+                    <br />
+                    <div class="mc-field-group">
+
+                        <input type="email" value="" placeholder="email address" aria-lebel="email address" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+                    <div class="mc-field-group">
+                        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_a2c641e5b36bf93dd7357093f_379b2c1357" tabindex="-1" value="">
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        <script type="text/javascript">(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; fnames[2] = 'LNAME'; ftypes[2] = 'text'; fnames[3] = 'MMERGE3'; ftypes[3] = 'text'; fnames[4] = 'MMERGE4'; ftypes[4] = 'address'; fnames[5] = 'MMERGE5'; ftypes[5] = 'phone'; fnames[6] = 'MMERGE6'; ftypes[6] = 'number'; fnames[7] = 'MMERGE7'; ftypes[7] = 'address'; fnames[8] = 'MMERGE8'; ftypes[8] = 'text'; fnames[9] = 'MMERGE9'; ftypes[9] = 'text'; fnames[10] = 'MMERGE10'; ftypes[10] = 'zip'; fnames[11] = 'MMERGE11'; ftypes[11] = 'date'; fnames[12] = 'MMERGE12'; ftypes[12] = 'date'; fnames[13] = 'MMERGE13'; ftypes[13] = 'address'; fnames[14] = 'MMERGE14'; ftypes[14] = 'text'; fnames[15] = 'MMERGE15'; ftypes[15] = 'text'; fnames[16] = 'MMERGE16'; ftypes[16] = 'number'; fnames[17] = 'MMERGE17'; ftypes[17] = 'number'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+        <br />
         <div class="inner">
-            <section class="copyright">All content copyright <a href="//">DSA New Orleans</a> &copy; 2017 &bull; All rights reserved.</section>
+            <section class="copyright">All content copyright
+                <a href="//">DSA New Orleans</a> &copy; 2017 &bull; All rights reserved.</section>
         </div>
     </footer>
     <script src="/js/min/jquery.fitvids-ck.js"></script>
@@ -83,7 +142,5 @@
     <!-- <script>hljs.initHighlightingOnLoad();</script> -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
 </body>
+
 </html>
-
-
-
