@@ -26,5 +26,8 @@
     "babel-register": "^6.26.0",
     "moment": "^2.18.1",
     "vue": "^2.4.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }
