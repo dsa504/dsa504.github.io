@@ -1,4 +1,6 @@
+import webpack from "webpack";
 import path from "path";
+const isDebugBuild = process && process.env && process.env.NODE_ENV != "production";
 
 const config = {
 	context: __dirname,
@@ -24,6 +26,28 @@ const config = {
 		filename: "[name].js",
 		path: `${__dirname}/js/lib`
 	},
+	plugins: (function () {
+		let plugins = [];
+
+		if (!isDebugBuild) {
+
+			plugins.push(
+				new webpack.optimize.UglifyJsPlugin({
+					minimize: true,
+					mangle: true,
+					sourceMap: true,
+					output: {
+						comments: false
+					},
+					compress: {
+						warnings: false
+					}
+				})
+			);
+		}
+
+		return plugins;
+	})()
 };
 
 export default config;
