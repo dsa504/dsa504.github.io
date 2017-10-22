@@ -9,19 +9,22 @@
     sudo gem install jekyll
     ```
     * Windows (requires Chocolatey package manager)
+    
     ```powershell
-    choco install ruby
-    choco install ruby2.devkit
+    choco install ruby ruby2.devkit
     gem install jekyll
     ```
 ## Building
-    ```
-    jekyll build
-    ```
+    
+```bash
+npm build
+```
+
 ## Serving 
-    ```
-    jekyll serve --watch
-    ```
+
+```
+jekyll serve --watch
+```
 
 ## DSA Calendar Widget (already setup - skip this part)
 
