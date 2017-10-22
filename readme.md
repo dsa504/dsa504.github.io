@@ -17,7 +17,7 @@
 ## Building
     
 ```bash
-npm build
+NODE_ENV=production npm run-script build
 ```
 
 ## Serving 
