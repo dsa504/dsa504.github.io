@@ -1,3 +1,5 @@
 ---
 "extends":
   - "defaults"
+"env":
+  - "browser": true
