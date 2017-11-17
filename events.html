@@ -20,6 +20,24 @@ layout: default
                     <div itemprop="name" class="name">{{ event.summary }}</div>
                     <div class="location">{{ event.location }}</div>
                     <div class="description" itemprop="description">{{ event.description }}</div>
+
+                    <script type='application/ld+json'> 
+                        {
+                          "@context": "http://www.schema.org",
+                          "@type": "Event",
+                          "name": "{{ event.summary }}",
+                          "description": "{{ event.description }}",
+                          "startDate": "{{ event.startTime }}",
+                          "endDate": "{{ event.endTime }}",
+                          "location": {
+                            "@type": "Place",
+                            "name": "{{ event.location }}",
+                            "address": "{{ event.location }}"
+                          }
+                        }
+                    </script>
+
+
                 </li>
             </ul>
             <div id="errors" v-if="showErrors">
