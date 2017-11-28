@@ -3785,10 +3785,13 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                                                     console.log(theEvents);
 
                                                     _vm.data.calEvents = theEvents
-                                                    // all day events don't have a dateTime, so will screw up the chonological order- so if there's no dateTime, just use date
+                                                    // catch cancelled events
                                                     .filter(function (e) {
                                                         return e.start !== undefined;
-                                                    }).map(function (e) {
+                                                    })
+                                                    // all day events don't have a dateTime, so will screw up the chonological order - 
+                                                    // so if there's no dateTime, just use date
+                                                    .map(function (e) {
                                                         var hasStartTime = e.start.dateTime !== undefined;
                                                         var startTime = hasStartTime ? e.start.dateTime : e.start.date;
 
@@ -3806,6 +3809,10 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                                                             prettyStartTime: prettyStartTime,
                                                             prettyEndTime: prettyEndTime
                                                         });
+                                                    })
+                                                    // catch events before today
+                                                    .filter(function (e) {
+                                                        return !moment(e.startTime).isBefore(today);
                                                     })
                                                     // sort to make sure the events are in chron order
                                                     .sort(function (x, y) {

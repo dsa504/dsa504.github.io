@@ -49,8 +49,6 @@ import {} from "babel-polyfill";
 
                 const theEvents = (await response.json()).items;
                 
-                console.log(theEvents);
-                
                 _vm.data.calEvents = theEvents
                     // catch cancelled events
                     .filter(e => e.start !== undefined) 
@@ -76,6 +74,8 @@ import {} from "babel-polyfill";
                             prettyEndTime, 
                         };
                     })
+                    // catch events before today
+                    .filter(e => !moment(e.startTime).isBefore(today))
                     // sort to make sure the events are in chron order
                     .sort((x,y) => { 
                         const a = new Date(x.startTime);
