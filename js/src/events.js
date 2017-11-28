@@ -49,13 +49,18 @@ import {} from "babel-polyfill";
 
                 const theEvents = (await response.json()).items;
                 
+                console.log(theEvents);
+                
                 _vm.data.calEvents = theEvents
-                    // all day events don't have a dateTime, so will screw up the chonological order- so if there's no dateTime, just use date
+                    // catch cancelled events
+                    .filter(e => e.start !== undefined) 
+                    // all day events don't have a dateTime, so will screw up the chonological order - 
+                    // so if there's no dateTime, just use date
                     .map((e) => {
-                        const hasStartTime = e.start.dateTime != undefined;
+                        const hasStartTime = e.start.dateTime !== undefined;
                         const startTime = (hasStartTime) ? e.start.dateTime : e.start.date;
                         
-                        const hasEndTime = e.end.dateTime != undefined 
+                        const hasEndTime = e.end.dateTime !== undefined 
                         const endTime = (hasEndTime) ? e.end.dateTime : e.end.date;
                         
                         const prettyStartTime = getPrettyDate(startTime);
