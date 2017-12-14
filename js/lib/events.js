@@ -435,7 +435,7 @@ module.exports = function (method, arg) {
 /* 21 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.5.1' };
+var core = module.exports = { version: '2.5.2' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -1793,7 +1793,7 @@ var $export = __webpack_require__(0);
 module.exports = function (COLLECTION) {
   $export($export.S, COLLECTION, { of: function of() {
     var length = arguments.length;
-    var A = Array(length);
+    var A = new Array(length);
     while (length--) A[length] = arguments[length];
     return new this(A);
   } });
@@ -2388,8 +2388,8 @@ module.exports = function () {
     notify = function () {
       process.nextTick(flush);
     };
-  // browsers with MutationObserver
-  } else if (Observer) {
+  // browsers with MutationObserver, except iOS Safari - https://github.com/zloirock/core-js/issues/339
+  } else if (Observer && !(global.navigator && global.navigator.standalone)) {
     var toggle = true;
     var node = document.createTextNode('');
     new Observer(flush).observe(node, { characterData: true }); // eslint-disable-line no-new
@@ -2498,7 +2498,7 @@ var $OFFSET = DESCRIPTORS ? '_o' : BYTE_OFFSET;
 
 // IEEE754 conversions based on https://github.com/feross/ieee754
 function packIEEE754(value, mLen, nBytes) {
-  var buffer = Array(nBytes);
+  var buffer = new Array(nBytes);
   var eLen = nBytes * 8 - mLen - 1;
   var eMax = (1 << eLen) - 1;
   var eBias = eMax >> 1;
@@ -2616,7 +2616,7 @@ if (!$typed.ABV) {
   $ArrayBuffer = function ArrayBuffer(length) {
     anInstance(this, $ArrayBuffer, ARRAY_BUFFER);
     var byteLength = toIndex(length);
-    this._b = arrayFill.call(Array(byteLength), 0);
+    this._b = arrayFill.call(new Array(byteLength), 0);
     this[$LENGTH] = byteLength;
   };
 
@@ -3706,7 +3706,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 __webpack_require__(125);
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } //import Vue from "vue";
-// import moment from "moment";
+//import moment from "moment";
 
 
 _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
@@ -3740,49 +3740,48 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                             //showErrors:false,
                             mounted: function () {
                                 var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                                    var today, uri, response, theEvents;
+                                    var today, timeMax, uri, response, theEvents;
                                     return regeneratorRuntime.wrap(function _callee$(_context) {
                                         while (1) {
                                             switch (_context.prev = _context.next) {
                                                 case 0:
                                                     today = moment(new Date());
+                                                    timeMax = moment(new Date()).add(3, "month");
                                                     // only get upcoming events:
 
-                                                    uri = "https://www.googleapis.com/calendar/v3/calendars/" + config.calendarId + "/events?key=" + config.apiKey + "&timeMin=" + today.toISOString();
+                                                    uri = "https://www.googleapis.com/calendar/v3/calendars/" + config.calendarId + "/events?key=" + config.apiKey + "&timeMin=" + today.toISOString() + "&timeMax=" + timeMax.toISOString() + "&singleEvents=true&orderBy=startTime";
                                                     response = void 0;
-                                                    _context.prev = 3;
-                                                    _context.next = 6;
+                                                    _context.prev = 4;
+                                                    _context.next = 7;
                                                     return fetch(uri);
 
-                                                case 6:
+                                                case 7:
                                                     response = _context.sent;
-                                                    _context.next = 13;
+                                                    _context.next = 14;
                                                     break;
 
-                                                case 9:
-                                                    _context.prev = 9;
-                                                    _context.t0 = _context["catch"](3);
+                                                case 10:
+                                                    _context.prev = 10;
+                                                    _context.t0 = _context["catch"](4);
 
                                                     _vm.showErrors = true;
                                                     return _context.abrupt("return");
 
-                                                case 13:
+                                                case 14:
                                                     if (response.ok) {
-                                                        _context.next = 15;
+                                                        _context.next = 16;
                                                         break;
                                                     }
 
                                                     return _context.abrupt("return", _vm.showErrors = true);
 
-                                                case 15:
-                                                    _context.next = 17;
+                                                case 16:
+                                                    _context.next = 18;
                                                     return response.json();
 
-                                                case 17:
+                                                case 18:
                                                     theEvents = _context.sent.items;
 
-
-                                                    console.log(theEvents);
 
                                                     _vm.data.calEvents = theEvents
                                                     // catch cancelled events
@@ -3826,7 +3825,7 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                                                     return _context.stop();
                                             }
                                         }
-                                    }, _callee, undefined, [[3, 9]]);
+                                    }, _callee, undefined, [[4, 10]]);
                                 }));
 
                                 function mounted() {
@@ -4137,6 +4136,7 @@ var wksDefine = __webpack_require__(64);
 var enumKeys = __webpack_require__(128);
 var isArray = __webpack_require__(52);
 var anObject = __webpack_require__(1);
+var isObject = __webpack_require__(4);
 var toIObject = __webpack_require__(15);
 var toPrimitive = __webpack_require__(22);
 var createDesc = __webpack_require__(31);
@@ -4329,14 +4329,13 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
   return _stringify([S]) != '[null]' || _stringify({ a: S }) != '{}' || _stringify(Object(S)) != '{}';
 })), 'JSON', {
   stringify: function stringify(it) {
-    if (it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
     var args = [it];
     var i = 1;
     var replacer, $replacer;
     while (arguments.length > i) args.push(arguments[i++]);
-    replacer = args[1];
-    if (typeof replacer == 'function') $replacer = replacer;
-    if ($replacer || !isArray(replacer)) replacer = function (key, value) {
+    $replacer = replacer = args[1];
+    if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
+    if (!isArray(replacer)) replacer = function (key, value) {
       if ($replacer) value = $replacer.call(this, key, value);
       if (!isSymbol(value)) return value;
     };
@@ -5897,7 +5896,7 @@ $export($export.P + $export.F * __webpack_require__(3)(function () {
     var start = toAbsoluteIndex(begin, len);
     var upTo = toAbsoluteIndex(end, len);
     var size = toLength(upTo - start);
-    var cloned = Array(size);
+    var cloned = new Array(size);
     var i = 0;
     for (; i < size; i++) cloned[i] = klass == 'String'
       ? this.charAt(start + i)
@@ -8284,7 +8283,7 @@ redefineAll($Observable, {
     });
   },
   of: function of() {
-    for (var i = 0, l = arguments.length, items = Array(l); i < l;) items[i] = arguments[i++];
+    for (var i = 0, l = arguments.length, items = new Array(l); i < l;) items[i] = arguments[i++];
     return new (typeof this === 'function' ? this : $Observable)(function (observer) {
       var done = false;
       microtask(function () {
